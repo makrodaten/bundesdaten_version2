@@ -11,127 +11,233 @@
       max-width: 1200px;
       margin: 20px auto;
       padding: 0 20px;
+      line-height: 1.6;
+      color: #333;
     }
-    select {
-      width: auto;
-      max-width: 400px;
-      margin: 10px 0;
+    
+    /* Header Bereich */
+    .page-header {
+      padding-bottom: 15px;
+      margin-bottom: 25px;
     }
-    button {
-      margin: 5px;
-      padding: 8px 16px;
-      cursor: pointer;
+    
+    .page-header h1 {
+      color: #000000;
+      margin-bottom: 10px;
     }
-    #dataInfo {
-      margin: 10px 0;
-      padding: 10px;
-      background: #f0f0f0;
-      border-radius: 4px;
+    
+    .intro-text {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 15px;
     }
-    #sourceInfo {
-      font-size: 90%;
-      color: #444;
+
+    /* Auswahlbereich */
+    .selection-section {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 20px;
       margin: 20px 0;
-      padding: 10px;
-      background: #f9f9f9;
-      border-left: 3px solid #007bff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    label {
-      margin-right: 15px;
-    }
-    .options-section {
+    
+    .filter-option {
       margin: 15px 0;
       padding: 10px;
-      background: #f5f5f5;
-      border-radius: 4px;
+      background: white;
+      border-radius: 6px;
     }
+    
     .select-container {
       display: inline-block;
-      margin-right: 20px;
+      margin-right: 30px;
       vertical-align: top;
+      background: white;
+      padding: 15px;
+      border-radius: 6px;
+      border: 1px solid #e9ecef;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
+    
+    .select-container h2 {
+      color: #000000;
+      font-size: 16px;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    /* Form Elemente */
+    select {
+      width: auto;
+      min-width: 300px;
+      max-width: 400px;
+      margin: 10px 0;
+      padding: 8px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      background: white;
+    }
+    
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      background: #f8f9fa; /* Grau statt Blau */
+      color: #000000; /* Schwarze Schrift */
+      border: 1px solid #6c757d;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: background-color 0.2s ease;
+    }
+    
+    button:hover {
+      background: #e9ecef;
+    }
+    
+    button:active {
+      transform: translateY(1px);
+    }
+
+    /* Info Boxen */
+    #dataInfo {
+      margin: 15px 0;
+      padding: 12px 15px;
+      background: #f8f9fa; /* Hellgrau statt Blau */
+      border: 1px solid #dee2e6; /* Grau statt Blau */
+      border-radius: 6px;
+      color: #495057; /* Dunkelgrau statt Blau */
+    }
+    
+    #sourceInfo {
+      font-size: 90%;
+      color: #666;
+      margin: 25px 0;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 4px; /* Keine blaue linke Linie */
+    }
+    
+    label {
+      margin-right: 15px;
+      font-weight: normal;
+    }
+    
+    .options-section {
+      margin: 15px 0;
+      padding: 15px;
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 6px;
+    }
+    
+    /* Chart Bereich */
     #chartContainer {
       position: relative;
       height: 60vh;
       min-height: 400px;
       max-height: 600px;
-      margin-top: 20px;
+      margin-top: 25px;
+      background: white;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
     
     .download-btn {
       position: absolute;
-      top: 0px;
-      right: 0px;
+      top: 10px;
+      right: 10px;
       background: white;
-      border: 1px solid #007bff;
+      border: 1px solid #6c757d; /* Grau statt Blau */
       border-radius: 4px;
       padding: 8px 12px;
       cursor: pointer;
       font-size: 12px;
-      color: #007bff;
+      color: #495057; /* Dunkelgrau statt Blau */
       display: none;
       transition: all 0.2s ease;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     
     .download-btn:hover {
-      background: #007bff;
-      color: white;
+      background: #f8f9fa;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .select-container {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 100%;
+      }
+      
+      select {
+        min-width: 100%;
+        max-width: 100%;
+      }
     }
 </style>
 </head>
 <body>
-  <h1>Bundesbank Zeitreihen-Daten</h1>
-  <p>Wählen Sie eine BIP- oder Verwendungsvariable aus, um deren Daten anzuzeigen und zu plotten.</p>
+  <div class="page-header">
+    <h1>Bundesbank Zeitreihen-Daten</h1>
+    <p class="intro-text">Wählen Sie eine BIP- oder Verwendungsvariable aus, um deren Daten anzuzeigen und zu plotten.</p>
+  </div>
   
-  <p>
-    <label>
-      <input id="adjustedOnly" type="checkbox"> 
-      Nur saisonbereinigte Reihen anzeigen
-    </label>
-  </p>
+  <div class="selection-section">
+    <div class="filter-option">
+      <label>
+        <input id="adjustedOnly" type="checkbox"> 
+        Nur saisonbereinigte Reihen anzeigen
+      </label>
+    </div>
 
-  <div class="select-container">
-    <h2>BIP (real, saisonbereinigt)</h2>
-    <select id="bipSelect" multiple size="5" onchange="updateOptions('bip')"></select>
+    <div class="select-container">
+      <h2>BIP (real, saisonbereinigt)</h2>
+      <select id="bipSelect" multiple size="5" onchange="updateOptions('bip')"></select>
+    </div>
+
+    <div class="select-container">
+      <h2>Verwendung des BIP (nominal, saisonbereinigt)</h2>
+      <select id="verwendungSelect" multiple size="10" onchange="updateOptions('verw')"></select>
+    </div>
+
+    <div style="clear: both;"></div>
+
+    <div id="bipOptions" class="options-section" style="display: none;">
+      <label>
+        <input checked name="bipScale" type="radio" value="level"> Level
+      </label>
+      <label>
+        <input name="bipScale" type="radio" value="log"> Log
+      </label>
+      <label>
+        Index auf 100 im Jahr: 
+        <input id="baseYear" type="number" value="1995" style="width: 80px;">
+      </label>
+    </div>
+
+    <div id="verwendungOptions" class="options-section" style="display: none;">
+      <label>
+        <input checked name="verwScale" type="radio" value="level"> Level
+      </label>
+      <label>
+        <input name="verwScale" type="radio" value="log"> Log
+      </label>
+      <label>
+        <input id="percentCheck" type="checkbox"> Als Prozent des BIP
+      </label>
+    </div>
+
+    <p>
+      <button onclick="plotData()">Plot erstellen</button>
+      <button onclick="clearPlot()">Plot löschen</button>
+    </p>
   </div>
-
-  <div class="select-container">
-    <h2>Verwendung des BIP (nominal, saisonbereinigt)</h2>
-    <select id="verwendungSelect" multiple size="10" onchange="updateOptions('verw')"></select>
-  </div>
-
-  <div style="clear: both;"></div>
-
-  <div id="bipOptions" class="options-section" style="display: none;">
-    <label>
-      <input checked name="bipScale" type="radio" value="level"> Level
-    </label>
-    <label>
-      <input name="bipScale" type="radio" value="log"> Log
-    </label>
-    <label>
-      Index auf 100 im Jahr: 
-      <input id="baseYear" type="number" value="1995" style="width: 80px;">
-    </label>
-  </div>
-
-  <div id="verwendungOptions" class="options-section" style="display: none;">
-    <label>
-      <input checked name="verwScale" type="radio" value="level"> Level
-    </label>
-    <label>
-      <input name="verwScale" type="radio" value="log"> Log
-    </label>
-    <label>
-      <input id="percentCheck" type="checkbox"> Als Prozent des BIP
-    </label>
-  </div>
-
-  <p>
-    <button onclick="plotData()">Plot erstellen</button>
-    <button onclick="clearPlot()">Plot löschen</button>
-  </p>
 
   <div id="dataInfo">Bereit zum Laden der Daten...</div>
 
@@ -333,12 +439,20 @@
     }
 
     async function plotData() {
+      // Vorhandenen Plot automatisch entfernen
+      if (chart) {
+        chart.destroy();
+        chart = null;
+      }
+      
+      // Verstecke Download-Button vorerst
+      document.getElementById('downloadBtn').style.display = 'none';
+      
+      // Daten laden
+      await loadData();
       if (!currentData || currentData.length === 0) {
-        await loadData();
-        if (!currentData || currentData.length === 0) {
-          alert('Keine Variable ausgewählt');
-          return;
-        }
+        alert('Keine Variable ausgewählt');
+        return;
       }
       
       const bipScale = document.querySelector('input[name="bipScale"]:checked');
@@ -460,48 +574,56 @@
         });
       });
       
-      if (chart) chart.destroy();
-      
       chart = new Chart(ctx, {
-        type: 'line',
-        data: { labels, datasets },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false, 
-          plugins: {
-            title: {
-              display: true,
-              text: currentData.map(s => s.name).join(', ').substring(0, 100),
-              font: { size: 18 }
-            },
-            legend: {
-              display: true,
-              position: 'bottom'
-            }
-          },
-          scales: {
-            x: {
-              title: { display: true, text: 'Jahr' },
-              ticks: {
-                callback: function(value, index, values) {
-                  const fullDate = labels[index];
-                  if (fullDate && fullDate.includes('-')) {
-                    const year = fullDate.split('-')[0];
-                    if (fullDate.endsWith('Q1')) {
-                      return year;
-                    }
-                    return ''; 
+          type: 'line',
+          data: { labels, datasets },
+          options: {
+              responsive: true,
+              maintainAspectRatio: false, 
+              layout: {
+                  padding: {
+                      bottom: 40
                   }
-                  return fullDate;
-                },
-                maxTicksLimit: 100
+              },
+              plugins: {
+                  title: {
+                      display: true,
+                      text: currentData.map(s => s.name).join(', ').substring(0, 100),
+                      font: { size: 18 }
+                  },
+                  legend: {
+                      display: true,
+                      position: 'bottom'
+                  }
+              },
+              scales: {
+                  x: {
+                      title: { 
+                          display: true, 
+                          text: 'Jahr',
+                          padding: { top: 15, bottom: 15 }
+                      },
+                      ticks: {
+                          callback: function(value, index, values) {
+                              const fullDate = labels[index];
+                              if (fullDate && fullDate.includes('-')) {
+                                  const year = fullDate.split('-')[0];
+                                  return year;
+                              }
+                              return fullDate;
+                          },
+                          maxRotation: 45,
+                          minRotation: 45
+                      }
+                  },
+                  y: {
+                      title: { 
+                          display: true, 
+                          text: yTitle 
+                      }
+                  }
               }
-            },
-            y: {
-              title: { display: true, text: yTitle }
-            }
           }
-        }
       });
       
       // Zeige Download-Button an
